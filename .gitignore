@@ -129,7 +129,7 @@ dmypy.json
 .pyre/
 
 # experiments and data processed by data_handler.py
-adse/experiments/*
+#adse/experiments/*
 adse/data
 
 .idea/
