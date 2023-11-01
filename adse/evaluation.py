@@ -6,6 +6,8 @@ import numpy as np
 from statistics import NormalDist
 
 #####################################################################################
+#                               evaluation.py                                       #
+#                                                                                   #
 # Program to make detailed plots of various data fetched in the experiments.        #
 # Uses an experiment file compressed into dill format, for this use data_handler.py #
 #                                                                                   #
@@ -313,12 +315,12 @@ def plot_kld_bars(kld_data):
         #ax.text(x + 0.5, -0.003, texts[idx], size=12, ha='center')
         ax.text(x + 0.5, -0.012, texts[idx], size=12, ha='center')
 
-    # for f_m
+    # uncomment the 3 lines below and comment f_f for f_m
     #plt.ylim((0, 0.03))
     #ax.text(-0.5, -0.0015, '$\sigma:$')
     #ax.text(-0.8, -0.003, '$\it{Scenario}:$')
 
-    # for f_f
+    # uncomment the 3 lines below and comment f_m for f_f
     ax.text(-0.5, -0.006, '$\sigma:$')
     ax.text(-0.8, -0.012, '$\it{Scenario}:$')
     plt.ylim((0,0.12))
@@ -345,7 +347,7 @@ if __name__ == "__main__":
     with open('data', 'rb') as file:
         data = dill.load(file)
 
-    # change
+    # change to
     scenarios = ['equal']
     variance = ['low']
     method = ['bw']
@@ -355,7 +357,7 @@ if __name__ == "__main__":
     kld_data, overlap_data = sort_kld_ovl(data, scenarios = scenarios, scenario_variance = variance, method = method, mud_mean = scale, mud_variance = [0.2])
 
     #plot_overlap(overlap_data)
-    #plot_kld_bars(kld_data)
+    plot_kld_bars(kld_data)
 
 
 

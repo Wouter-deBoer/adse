@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 
 
 #############################################################################
+#                           Noise class                                     #
+#                                                                           #
 # Creates Noise objects, which are basically just distributions             #
 # Used to easen and more efficiently work with scipy distributions          #
 # The mean and std of a Noise object can be reset by calling it.            #
@@ -73,5 +75,5 @@ if __name__ == "__main__":
     plt.xlabel('Velocity')
     plt.ylabel('Magnitude')
     plt.legend(loc='upper left',fontsize='large')
-    plt.savefig('figure')
+    #plt.savefig('figure')
     plt.show()

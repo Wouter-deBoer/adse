@@ -6,7 +6,10 @@ from learner import Learner
 
 
 #################################################################################
+#                               Simulation class                                #
+#                                                                               #
 # Creates a simulation without plotting: more lightweight than visualization.py #
+# Is a 'headless' variant of visualization.py                                   #
 #################################################################################
 
 class Simulation:
@@ -93,12 +96,12 @@ if __name__ == "__main__":
 
     np.random.seed(1)
     dynamics = Dynamics(dt=1, constraints_wall=(0, 150), constraints_mud=((5, 10), (15, 20)), n=100, noise=noise,
-                        noise_mud=noise_mud, mud_mean_scale=0.75, randomize_mud=True, randomizer=noise_randomizer, verbose=True)
+                        noise_mud=noise_mud, mud_mean_scale=0.75, randomize_mud=True, randomizer=noise_randomizer, verbose=False)
 
     t_model = np.array(([0.5, 0.5]))
 
-    adse_trained = ADSE(['mud', 'free'], t_model=t_model)
-    adse_no_hmm = ADSE(['mud', 'free'])
+    adse_trained = ADSE(['mud', 'free'], t_model=t_model, verbose=False)
+    adse_no_hmm = ADSE(['mud', 'free'],verbose=False)
     sim = Simulation(dynamics, adse_trained, adse_no_hmm)
 
     sim.discrete = False

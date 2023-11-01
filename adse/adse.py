@@ -1,6 +1,15 @@
 import numpy as np
 from noise import Noise
 
+####################################################################################
+#                                   ADSE class                                     #
+#                                                                                  #
+# Contains attributes necessary for abstract discrete state estimation             #
+# such as the amount of states and belief                                          #
+# Also used for the 'forward pass' of Hidden Markov Model state estimation:        #
+# makes estimations on the current state given a velocity and the current model    #
+####################################################################################
+
 class ADSE:
     def __init__(self, states, window=3, t_model=None, noise_init = None, noise_mud_init = None, init_belief=None, verbose=True):
 

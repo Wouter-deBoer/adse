@@ -10,13 +10,18 @@ from noise import Noise
 matplotlib.use('TKAgg')
 
 #############################################################################
+#                         Visualization class                               #
+#                                                                           #
 # Creates a simulation in matplotlib                                        #
 # Is used to create the simulation worlds and graphs                        #
 # Also updates the images and calls the adse                                #
 # Originally was created for an ADSE problem with walls                     #
+#                                                                           #
+# Future work can include using simulation.py within this class since now   #
+# it contains a lot of duplicate functions                                  #
 #############################################################################
 
-class SimpleCarEnv:
+class Visualization:
 
     def __init__(self, dynamics_obj=Dynamics()):
         self.dynamics = dynamics_obj
@@ -35,10 +40,10 @@ class SimpleCarEnv:
         self.rect = None
 
         # updatable car images
-        self.car = plt.Rectangle((self.dynamics.state - 0.5 * self.car_width, self.car_y - self.car_height),
+        self.car = plt.Rectangle((self.dynamics.state[0] - 0.5 * self.car_width, self.car_y - self.car_height),
                                  self.car_width, self.car_height,
                                  fc='r', lw=2, ec='black', label='Current car location')
-        self.car_past = plt.Rectangle((self.dynamics.state - 0.5 * self.car_width, self.car_y - self.car_height),
+        self.car_past = plt.Rectangle((self.dynamics.state[0] - 0.5 * self.car_width, self.car_y - self.car_height),
                                       self.car_width, self.car_height,
                                       fc='none', lw=2, ec='blue', ls='--', label='Previous car location')
 
@@ -253,12 +258,12 @@ if __name__ == "__main__":
                         noise_mud=noise_mud, mud_mean_scale=0.75, randomize_mud=True,
                         randomizer=[Noise(mean=10, std=1), Noise(mean=10, std=1)], verbose=True)
 
-    Env = SimpleCarEnv(dynamics)
+    Env = Visualization(dynamics)
 
-    Env.adse = ADSE(['mud', 'free'], t_model=[0.85171, 0.094570])
+    Env.adse = ADSE(['mud', 'free'], t_model=[0.85171, 0.094570], verbose=False)
     Env.discrete = False
 
     input_arr = Env.dynamics.input_array
     input_arr[:, :] = 1.
 
-    Env.plot(stepwise=True)
+    Env.plot(input_arr, stepwise=True)

@@ -4,10 +4,11 @@ import dill
 import numpy as np
 
 #####################################################################################
+#                               data_handler.py                                     #
+#                                                                                   #
 # Program to extract data out of an experiment file and to compress in useful size  #
 # Pass a folder with saved experiments as argument                                  #
-#                                                                                   #
-# Plots learning curves, learned parameters, KLD and OVL                            #
+# Change num_experiments in get_data() to the correct number                        #
 #####################################################################################
 def load_experiments(folder):
     files = [file for file in os.listdir(folder) if not file.endswith('testing')]

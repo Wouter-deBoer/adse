@@ -1,6 +1,19 @@
 import numpy as np
 from adse import ADSE
 
+####################################################################################
+#                                 Learner class                                    #
+#                                                                                  #
+# Adds learning capability to an ADSE class object                                 #
+# Contains Baum-Welch learning and Forward Extraction (FWE)                        #
+# Pass an ADSE object that went through a simulation run (and thus contains        #
+# a velocity array, observation array and belief array) and call run_bw to gain    #
+# a transition and observation model estimate                                      #
+#                                                                                  #
+# the transition model estimate for FWE is done in experiment.py to save           #
+# computational time. Future work should place it in this class                    #
+####################################################################################
+
 class Learner:
     def __init__(self, adse):
         self.adse = adse
@@ -67,6 +80,7 @@ class Learner:
 
         return self.smoothed
 
+    # estimate the transition model with the Baum-Welch method
     def baum_welch(self):
         # ksi is a three-dimensional array
         # first dimension is timesteps: equal to the amount of transitions

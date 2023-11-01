@@ -5,9 +5,11 @@ import copy
 
 
 #############################################################################
-# Describes the dynamics of the world.                                      #
+#                           Dynamics class                                  #
+#                                                                           #
+# Describes the underlying dynamics of the world.                           #
 # Also defines the constraints of the world (where walls and mud are)       #
-# Makes use of Gaussian noise to model movement                                    #
+# Makes use of Gaussian noise to model movement                             #
 # For now, the mean of the moved distance is equal to the control input     #
 # Use integrate_step for a single integration step                          #
 # Use integrate for a sequence(numpy array) of integration steps            #
@@ -279,7 +281,7 @@ class Dynamics:
 
         return self.state
 
-    # integrate for the whole duration(n)
+    # integrate for the whole duration (n)
     # use an int or float for same command every timestep
     # use an array (size should be equal to [n+1, input]) for a sequence of commands
     def integrate(self, input_commands):
@@ -317,7 +319,7 @@ if __name__ == "__main__":
     np.random.seed(1)
     noise = [Noise(mean=150, std=1), Noise(mean=150, std=1)]
     d = Dynamics(dt=1, initial_state=np.array([0]), n = 1000, constraints_wall=(0, 1500),
-                 constraints_mud=((10, 15), (30, 35), (50, 55), (70, 75)), verbose=True, randomize_mud=True,
+                 constraints_mud=((10, 15), (30, 35), (50, 55), (70, 75)), verbose=False, randomize_mud=True,
                  randomizer=noise)
     d_copy = copy.deepcopy(d)
     input_arr = d.input_array

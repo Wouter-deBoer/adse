@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# experiments and data processed by data_handler.py
+experiments/*
+data
+
+.idea/

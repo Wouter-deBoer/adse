@@ -13,13 +13,15 @@ from simulation import Simulation
 from learner import Learner
 
 
-####################################################################################
-# Program to run experiments and plot the results. The experiment can also be      #
-# saved as a pickle for later access.                                              #
-# Allows for easier running of multiple sets of simulations with multiple settings.#
-# To run, simply define a dynamics object and two adse to be compared.             #
-# Then call run or run_and_plot.                                                   #
-####################################################################################
+######################################################################################
+#                                 Experiment class                                   #
+#                                                                                    #
+# Program to run experiments and plot the results. The experiment can also be        #
+# saved as a pickle for later access.                                                #
+# Allows for easier running of multiple sets of simulation.py with multiple settings.#
+# To run, simply define a dynamics object and two adse to be compared.               #
+# Then call run or run_and_plot.                                                     #
+######################################################################################
 
 
 class Experiment:
@@ -500,4 +502,4 @@ if __name__ == "__main__":
                 exp.kl_divergence = kl_divergence
                 exp.learner = Learner(adse_trained)
 
-                exp.run_and_plot(3,  plot_title=None, file_name=file_name, learning=learning)
+                exp.run_and_plot(3,  plot_title='example', file_name=file_name, learning=learning)
