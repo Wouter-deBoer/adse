@@ -20,6 +20,7 @@ from learner import Learner
 # saved as a pickle for later access.                                                #
 # Allows for easier running of multiple sets of simulation.py with multiple settings.#
 # To run, simply define a dynamics object and two adse to be compared.               #
+# Add a folder called 'experiments' to adse/adse if it not exists yet                #
 # Then call run or run_and_plot.                                                     #
 ######################################################################################
 
