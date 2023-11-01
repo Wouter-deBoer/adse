@@ -11,7 +11,7 @@ import numpy as np
 # Change num_experiments in get_data() to the correct number                        #
 #####################################################################################
 def load_experiments(folder):
-    files = [file for file in os.listdir(folder) if not file.endswith('testing')]
+    files = [file for file in os.listdir(folder) if not file.endswith('testing') or file.endswith('placeholder')]
 
     # triple nested dictionary: scenario -> variance -> learning type -> list of experiments
     experiments = {'free': {'high': {'bw': [], 'fwe': []}, 'low': {'bw': [], 'fwe': []}},
